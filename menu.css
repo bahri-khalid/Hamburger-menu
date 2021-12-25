@@ -1,0 +1,109 @@
+.menu-wrap{
+    position: absolute;
+    width: 110vw;
+    height: 100vh;
+    background: #101010;
+    z-index: 1;
+    transition: 0.5s;
+    transform: translateX(-100%);
+    border-radius: 0% 20px 20px 0%;
+}
+
+.menu li{
+    list-style: none;
+    margin-top: 10px;
+}
+
+.menu{
+    position: relative;
+    left: 40%;
+    top: 35%;
+}
+
+.menu a {
+    text-decoration: none;
+    color: seashell;
+    font-size:larger;
+}
+
+.menu a:hover{color:yellow;}
+
+.hamburger{
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    background: #10101081;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    border-radius: 50%;
+}
+
+.hamburger div{
+    width: 80%;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: yellow;
+    position: relative;
+    transition: 0.2s;
+}
+
+.hamburger div::before{
+    content: '';
+    top: -10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5px;
+    background-color: yellow;
+    transition: 0.2s;
+}
+
+.hamburger div::after{
+    content: '';
+    top: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5px;
+    background-color: yellow;
+    transition: 0.2s;
+}
+
+.chbox{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    height: 60px;
+    width: 60px;
+    opacity: 0;
+}
+
+.chbox:checked + .hamburger>div{
+    transform: rotateZ(135deg);
+}
+
+.chbox:checked + .hamburger>div::after,.chbox:checked + .hamburger>div::before{
+    transform: rotateZ(90deg);
+    top: 0;
+}
+
+.chbox:checked:hover +.hamburger>div{
+    transform: rotateZ(225deg);
+    background-color: tomato;
+}
+
+.chbox:checked:hover + .hamburger>div::after,.chbox:checked:hover + .hamburger>div::before{
+    background-color: tomato;
+}
+
+.chbox:checked ~ .menu-wrap{
+    transform: translateX(0%);
+}
+.chbox:checked ~ .menu{
+    visibility: hidden;
+}
